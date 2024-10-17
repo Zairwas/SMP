@@ -38,7 +38,7 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
     t_EntierLong low_el = !compareAbs(el_1, el_2) ? el_1 : el_2;
     int chiffres[MAXCHIFFRES] = {0};
 
-    for (int i = 0; i > MAXCHIFFRES; i++)
+    for (int i = 0; i < MAXCHIFFRES; i++)
     {
         retenu = false;
         chiffres[i] = high_el.chiffres[i] - low_el.chiffres[i];
@@ -58,7 +58,9 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
                 {
                     low_el.chiffres[i + 1] += 1;
                     added = true;
-                } else {
+                }
+                else
+                {
                     low_el.chiffres[j] = 0;
                 }
                 j++;
@@ -74,8 +76,48 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
 
 t_EntierLong addEL(t_EntierLong el_1, t_EntierLong el_2)
 {
+    t_EntierLong resEl = {false, {0}};
+
+    if (el_1.negatif == el_2.negatif)
+    {
+        resEl = addELS(el_1, el_2);
+        resEl.negatif = el_1.negatif;
+    }
+    else
+    {
+        resEl = subELS(el_1, el_2);
+        if (compareAbs(el_1, el_2))
+        {
+            resEl.negatif = el_1.negatif;
+        }
+        else
+        {
+            resEl.negatif = el_2.negatif;
+        }
+    }
+    return resEl;
 }
 
 t_EntierLong subEL(t_EntierLong el_1, t_EntierLong el_2)
 {
+    t_EntierLong resEl = {false, {0}};
+
+    if (el_1.negatif == el_2.negatif)
+    {
+        resEl = subELS(el_1, el_2);
+        if (compareAbs(el_1, el_2))
+        {
+            resEl.negatif = el_1.negatif;
+        }
+        else
+        {
+            resEl.negatif = !el_1.negatif;
+        }
+    }
+    else
+    {
+        resEl = addELS(el_1, el_2);
+        resEl.negatif = el_1.negatif;
+    }
+    return resEl;
 }
