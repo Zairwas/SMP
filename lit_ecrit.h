@@ -1,3 +1,7 @@
+#pragma once
+
+#include "entierlong.h"
+
 //fonction AfficheEntierLong(n)
 //affiche sur l'ecran un t_EntierLong
 void afficheEntierLong(t_EntierLong);
