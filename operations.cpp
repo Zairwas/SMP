@@ -67,9 +67,19 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
             }
         }
     }
+
     struct t_EntierLong resEl = {
         .negatif = el_1.negatif};
     memcpy(resEl.chiffres, chiffres, sizeof(int) * MAXCHIFFRES);
+
+    // Verification de si les deux entier longs
+    high_el.negatif = false;
+    low_el.negatif = false;
+    if (equality(high_el, low_el)) {
+        // S'ils sont egaux, le resultat obtenu est (-0)
+        // On enleve le (-) pour ne pas a devoir verifier si 0 == -0
+        resEl.negatif = false;
+    }
 
     return resEl;
 }
