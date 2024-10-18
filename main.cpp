@@ -209,5 +209,8 @@ bool test_equality(void) {
     // Comparaison de -1 et 2147483647
     cout << "CompAbs -1 == 2147483647 : " << (equality(test_minus_1, test_max_int) ? "True" : "False") << endl;
 
+    // Comparaison de -2147483647 et -2147483647
+    cout << "CompAbs -2147483647 == -2147483647: " << (equality(test_min_int, test_min_int) ? "True" : "False") << endl;
+
     return true;
 }   
