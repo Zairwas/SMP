@@ -29,7 +29,7 @@ bool equality(t_EntierLong long_1, t_EntierLong long_2);
 
 
 /**
- * @brief Compare la valeur absolue de deux long
+ * @brief Compare la valeur absolue de deux entier long, long_1 >= long_2
  * 
  * @param long_1 Nombre long à comparé
  * @param long_2 Nombre long servant de comparaison
