@@ -28,7 +28,7 @@ bool test_compareAbs(void);
 bool test_equality(void);
 bool test_addELS(void);
 bool test_subELS(void);
-
+bool test_fibonacci(void);
 // ============================================================
 // =        Main                                              =
 // ============================================================
@@ -46,6 +46,8 @@ int main(int argc, char const *argv[])
     test_addELS();
 
     test_subELS();
+
+    test_fibonacci();
     return 0;
 }
 
@@ -245,38 +247,52 @@ bool test_subELS(void)
     afficheEntierLong(abc);
 }
 
-void fibonnacci(int terme)
+void fibonacci(int terme)
 {
     t_EntierLong u0 = {false, {0}};
     t_EntierLong u1 = {false, {0}};
     u1.chiffres[0] = 1;
 
-    for (int i = 0; i <= terme; i++)
+    for (int i = 2; i <= terme; i++)
     {
+        t_EntierLong tmp = addELS(u0, u1);  // Calcul du prochain terme
+        
         if (i == terme)
         {
             if (compareAbs(u0, u1))
             {
-                afficheEntierLong(u0);
+                cout << "U" << terme - 2 << ": ";
                 afficheEntierLong(u1);
+                cout << "U" << terme - 1 << ": ";
+                afficheEntierLong(u0);
             }
             else
             {
-                afficheEntierLong(u1);
+                cout << "U" << terme - 2 << " = ";
                 afficheEntierLong(u0);
+                cout << "U" << terme - 1 << " = ";
+                afficheEntierLong(u1);
             }
+            cout << "U" << terme << " = ";
+            afficheEntierLong(tmp);
+
         }
-        if (compareAbs(u0, u1))
-        {
-            u1 = addELS(u0, u1);
-        }
-        else
-        {
-            u0 = addELS(u0, u1);
-        }
-        if (i == terme)
-        {
-            compareAbs(u0, u1) ? afficheEntierLong(u0) : afficheEntierLong(u1);
-        }
+        u0 = u1;
+        u1 = tmp;
+        
     }
+}
+
+bool test_fibonacci(void) {
+    cout << "Fibonacci de 10" << endl;
+    fibonacci(10);
+    cout << "Fibonacci de 20" << endl;
+    fibonacci(20);
+    cout << "Fibonacci de 30" << endl;
+    fibonacci(30);
+    cout << "Fibonacci de 40" << endl;
+    fibonacci(40);
+    cout << "Fibonacci de 20 000" << endl;
+    fibonacci(20000);
+    return true;
 }
