@@ -93,7 +93,7 @@ t_EntierLong addEL(t_EntierLong el_1, t_EntierLong el_2)
         resEl = addELS(el_1, el_2);
         resEl.negatif = el_1.negatif;
     }
-    else
+    else    
     {
         resEl = subELS(el_1, el_2);
         if (compareAbs(el_1, el_2))
