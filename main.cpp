@@ -431,7 +431,7 @@ bool test_compareAbs(void)
         .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     // Entete
-    cout << "=====> Test Convertion" << endl;
+    cout << "=====> Test Comparaison" << endl;
 
     // Comparaison de 1 et -1
     cout << "CompAbs |1| >= |-1|: " << (compareAbs(test_1, test_minus_1) ? "True" : "False") << endl;
