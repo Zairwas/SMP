@@ -17,7 +17,6 @@
 // Project
 #include "entierlong.h"
 #include "lit_ecrit.h"
-
 #include "utilitaires.h"
 #include "operations.h"
 
@@ -32,7 +31,7 @@ bool test_addELS(void);
 bool test_subELS(void);
 bool test_addEL(void);
 bool test_subEL(void);
-
+bool test_fibonacci(void);
 // ============================================================
 // =        Main                                              =
 // ============================================================
@@ -52,10 +51,10 @@ int main(int argc, char const *argv[])
 
     test_addEL();
     test_subEL();
-    
+
+    test_fibonacci();
     return 0;
 }
-
 
 // ============================================================
 // =        Tests                                             =
@@ -380,19 +379,17 @@ bool test_subEL(void) {
 
 bool test_converter(void) {
     // ========= Cas de Test ==========
-    // - 1, -1, 0, 2147483647, -2147483647 
+    // - 1, -1, 0, 2147483647, -2147483647
 
     // Variables de tests de verifications
     struct t_EntierLong test_1 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
     test_1.chiffres[0] = 1;
 
     struct t_EntierLong test_0 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
 
     struct t_EntierLong test_minus_1 = {
         .negatif = true,
@@ -402,13 +399,11 @@ bool test_converter(void) {
 
     struct t_EntierLong test_max_int = {
         .negatif = false,
-        .chiffres = {6, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
-    
+        .chiffres = {6, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
     struct t_EntierLong test_min_int = {
         .negatif = true,
-        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     struct t_EntierLong num_1 = converter(1);
     struct t_EntierLong num_minus_1 = converter(-1);
@@ -416,7 +411,7 @@ bool test_converter(void) {
     struct t_EntierLong num_max_int = converter(2147483646);
     struct t_EntierLong num_min_int = converter(-2147483647);
 
-    cout << "=====> Test Convertion" << endl; 
+    cout << "=====> Test Convertion" << endl;
     cout << "Test: 1, -1, 0, 2147483647, -2147483647" << endl;
     // Test 1
     cout << "int 1\t-> t_EntierLong : ";
@@ -447,19 +442,18 @@ bool test_converter(void) {
     return true;
 }
 
-bool test_compareAbs(void) {
+bool test_compareAbs(void)
+{
     // ========= Cas de Test ==========
-    // - 1, -1, 0, 2147483647, -2147483647 
+    // - 1, -1, 0, 2147483647, -2147483647
     struct t_EntierLong test_1 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
     test_1.chiffres[0] = 1;
 
     struct t_EntierLong test_0 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
 
     struct t_EntierLong test_minus_1 = {
         .negatif = true,
@@ -469,16 +463,14 @@ bool test_compareAbs(void) {
 
     struct t_EntierLong test_max_int = {
         .negatif = false,
-        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
-    
+        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
     struct t_EntierLong test_min_int = {
         .negatif = true,
-        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     // Entete
-    cout << "=====> Test Convertion" << endl; 
+    cout << "=====> Test Convertion" << endl;
 
     // Comparaison de 1 et -1
     cout << "CompAbs |1| >= |-1|: " << (compareAbs(test_1, test_minus_1) ? "True" : "False") << endl;
@@ -495,20 +487,19 @@ bool test_compareAbs(void) {
     return true;
 }
 
-bool test_equality(void) {
+bool test_equality(void)
+{
 
     // ========= Cas de Test ==========
-    // - 1, -1, 0, 2147483647, -2147483647 
+    // - 1, -1, 0, 2147483647, -2147483647
     struct t_EntierLong test_1 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
     test_1.chiffres[0] = 1;
 
     struct t_EntierLong test_0 = {
         .negatif = false,
-        .chiffres = {0}
-    };
+        .chiffres = {0}};
 
     struct t_EntierLong test_minus_1 = {
         .negatif = true,
@@ -518,16 +509,14 @@ bool test_equality(void) {
 
     struct t_EntierLong test_max_int = {
         .negatif = false,
-        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
-    
+        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
+
     struct t_EntierLong test_min_int = {
         .negatif = true,
-        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}
-    };
+        .chiffres = {7, 4, 6, 3, 8, 4, 7, 4, 1, 2, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0}};
 
     // Entete
-    cout << "=====> Test Convertion" << endl; 
+    cout << "=====> Test Convertion" << endl;
 
     // Comparaison de 1 et 1
     cout << "CompAbs 1 == 1: " << (equality(test_1, test_1) ? "True" : "False") << endl;
@@ -547,4 +536,91 @@ bool test_equality(void) {
     cout << "CompAbs -2147483647 == -2147483647: " << (equality(test_min_int, test_min_int) ? "True" : "False") << endl;
 
     return true;
-}   
+}
+
+bool test_addELS(void)
+{
+    struct t_EntierLong test_0 = {
+        .negatif = false,
+        .chiffres = {0}};
+    test_0.chiffres[0] = 0;
+    test_0.chiffres[19] = 1;
+    test_0.chiffres[18] = 9;
+
+    struct t_EntierLong test_1 = {
+        .negatif = false,
+        .chiffres = {0}};
+    test_1.chiffres[0] = 1;
+    test_1.chiffres[19] = 9;
+
+    t_EntierLong abc = addELS(test_1, test_0);
+    afficheEntierLong(abc);
+}
+
+bool test_subELS(void)
+{
+    struct t_EntierLong test_0 = {
+        .negatif = false,
+        .chiffres = {0}};
+    test_0.chiffres[0] = 1;
+
+    struct t_EntierLong test_1 = {
+        .negatif = false,
+        .chiffres = {0}};
+    test_1.chiffres[0] = 0;
+    test_1.chiffres[1] = 1;
+
+
+    t_EntierLong abc = subELS(test_1, test_0);
+    afficheEntierLong(abc);
+}
+
+void fibonacci(int terme)
+{
+    t_EntierLong u0 = {false, {0}};
+    t_EntierLong u1 = {false, {0}};
+    u1.chiffres[0] = 1;
+
+    for (int i = 2; i <= terme; i++)
+    {
+        t_EntierLong tmp = addELS(u0, u1);  // Calcul du prochain terme
+        
+        if (i == terme)
+        {
+            if (compareAbs(u0, u1))
+            {
+                cout << "U" << terme - 2 << ": ";
+                afficheEntierLong(u1);
+                cout << "U" << terme - 1 << ": ";
+                afficheEntierLong(u0);
+            }
+            else
+            {
+                cout << "U" << terme - 2 << " = ";
+                afficheEntierLong(u0);
+                cout << "U" << terme - 1 << " = ";
+                afficheEntierLong(u1);
+            }
+            cout << "U" << terme << " = ";
+            afficheEntierLong(tmp);
+
+        }
+        u0 = u1;
+        u1 = tmp;
+        
+    }
+}
+
+bool test_fibonacci(void) {
+    cout << "Fibonacci de 10" << endl;
+    fibonacci(10);
+    cout << "Fibonacci de 20" << endl;
+    fibonacci(20);
+    cout << "Fibonacci de 30" << endl;
+    fibonacci(30);
+    cout << "Fibonacci de 40" << endl;
+    fibonacci(40);
+    cout << "Fibonacci de 20 000" << endl;
+    fibonacci(20000);
+    return true;
+}
