@@ -544,13 +544,5 @@ bool test_fibonacci(void)
     fibonacci(40);
     cout << "Fibonacci de 20 000" << endl;
     fibonacci(20000);
-    cout << "Test de U60 - U59 = U58" << endl;
-    fibonacci(60);
-    t_EntierLong u58 = {false, {9, 7, 8, 9, 2, 7, 6, 8, 2, 1, 9, 5, 0, 0, 0, 0, 0, 0, 0, 0}};
-    t_EntierLong u59 = {false, {1, 4, 0, 1, 5, 2, 0, 1, 1, 2, 7, 6, 5, 9, 0, 0, 0, 0, 0, 0}};
-    t_EntierLong u60 = {false, {0, 2, 9, 5, 5, 7, 8, 0, 0, 1, 7, 4, 5, 1, 0, 0, 0, 0, 0, 0}};
-
-    afficheEntierLong(u58);
-    afficheEntierLong(subELS(u59, u60));
     return true;
 }
