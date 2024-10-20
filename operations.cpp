@@ -7,6 +7,8 @@
 // ============================================================
 
 #include "operations.h"
+#include "lit_ecrit.h"
+#include <iostream>
 
 t_EntierLong addELS(t_EntierLong el_1, t_EntierLong el_2)
 {
@@ -33,10 +35,21 @@ t_EntierLong addELS(t_EntierLong el_1, t_EntierLong el_2)
 
 t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
 {
-    bool retenu;
-    t_EntierLong high_el = compareAbs(el_1, el_2) ? el_1 : el_2;
-    t_EntierLong low_el = !compareAbs(el_1, el_2) ? el_1 : el_2;
+    bool retenu, resSign;
     int chiffres[MAXCHIFFRES] = {0};
+    t_EntierLong high_el;
+    t_EntierLong low_el;
+
+    if (compareAbs(el_1, el_2)) {
+        high_el = el_1;
+        low_el = el_2;
+        resSign = el_1.negatif;
+    }
+    else {
+        high_el = el_2;
+        low_el = el_1;
+        resSign = !el_1.negatif;
+    }
 
     for (int i = 0; i < MAXCHIFFRES; i++)
     {
@@ -68,8 +81,10 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
         }
     }
 
+
     struct t_EntierLong resEl = {
-        .negatif = el_1.negatif};
+        .negatif = resSign
+    };
     memcpy(resEl.chiffres, chiffres, sizeof(int) * MAXCHIFFRES);
 
     // Verification de si les deux entier longs
@@ -87,6 +102,7 @@ t_EntierLong subELS(t_EntierLong el_1, t_EntierLong el_2)
 t_EntierLong addEL(t_EntierLong el_1, t_EntierLong el_2)
 {
     t_EntierLong resEl = {false, {0}};
+    t_EntierLong EL_zero = {false, {0}};
 
     if (el_1.negatif == el_2.negatif)
     {
@@ -96,7 +112,10 @@ t_EntierLong addEL(t_EntierLong el_1, t_EntierLong el_2)
     else
     {
         resEl = subELS(el_1, el_2);
-        if (compareAbs(el_1, el_2))
+        if (equality(el_1, el_2)) {
+            // Do nothing
+        }
+        else if (compareAbs(el_1, el_2))
         {
             resEl.negatif = el_1.negatif;
         }
@@ -115,7 +134,10 @@ t_EntierLong subEL(t_EntierLong el_1, t_EntierLong el_2)
     if (el_1.negatif == el_2.negatif)
     {
         resEl = subELS(el_1, el_2);
-        if (compareAbs(el_1, el_2))
+        if (equality(el_1, el_2)) {
+            // Do nothing
+        }
+        else if (compareAbs(el_1, el_2))
         {
             resEl.negatif = el_1.negatif;
         }
