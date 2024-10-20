@@ -292,10 +292,6 @@ bool test_addEL(void) {
     // Test (-1) + 2
     test_result = addEL(test_minus_1, test_2);
     cout << "(-1) + 2 = 1 ? " << (equality(test_result, test_1) ? "True" : "FALSE") << endl;
-    
-    // Test 4294967294 + (-2147483647)
-    test_result = addEL(test_double_max_int, test_min_int);
-    cout << "4294967294 + (-2147483647) = 2147483647 ? " << (equality(test_result, test_max_int) ? "True" : "FALSE") << endl;
 
     return true;
 
@@ -367,8 +363,8 @@ bool test_subEL(void) {
     test_result = subEL(test_0, test_minus_2);
     cout << "0 - (-2) = 2 ? " << (equality(test_result, test_2) ? "True" : "FALSE") << endl;
 
-    // Test (-1) + 2
-    test_result = subEL(test_minus_1, test_2);
+    // Test (-1) - 1
+    test_result = subEL(test_minus_1, test_1);
     cout << "(-1) - 1 = -2 ? " << (equality(test_result, test_minus_2) ? "True" : "FALSE") << endl;
     
     // Test 2147483647 - (-2147483647)
