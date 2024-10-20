@@ -32,6 +32,7 @@ bool test_subELS(void);
 bool test_addEL(void);
 bool test_subEL(void);
 bool test_fibonacci(void);
+
 // ============================================================
 // =        Main                                              =
 // ============================================================
@@ -536,43 +537,6 @@ bool test_equality(void)
     cout << "CompAbs -2147483647 == -2147483647: " << (equality(test_min_int, test_min_int) ? "True" : "False") << endl;
 
     return true;
-}
-
-bool test_addELS(void)
-{
-    struct t_EntierLong test_0 = {
-        .negatif = false,
-        .chiffres = {0}};
-    test_0.chiffres[0] = 0;
-    test_0.chiffres[19] = 1;
-    test_0.chiffres[18] = 9;
-
-    struct t_EntierLong test_1 = {
-        .negatif = false,
-        .chiffres = {0}};
-    test_1.chiffres[0] = 1;
-    test_1.chiffres[19] = 9;
-
-    t_EntierLong abc = addELS(test_1, test_0);
-    afficheEntierLong(abc);
-}
-
-bool test_subELS(void)
-{
-    struct t_EntierLong test_0 = {
-        .negatif = false,
-        .chiffres = {0}};
-    test_0.chiffres[0] = 1;
-
-    struct t_EntierLong test_1 = {
-        .negatif = false,
-        .chiffres = {0}};
-    test_1.chiffres[0] = 0;
-    test_1.chiffres[1] = 1;
-
-
-    t_EntierLong abc = subELS(test_1, test_0);
-    afficheEntierLong(abc);
 }
 
 void fibonacci(int terme)
